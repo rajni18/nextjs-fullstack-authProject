@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
         const token = request.cookies.get('token')?.value || ''
         const decodedToken = jwt.verify(token,process.env.TOKEN_SECRET)
         const userId = decodedToken.id ;
-        const user = await User.findOne({_id : userId});
+        const user = await User.findOne({_id : userId}).select("-password");
         if(!user){
             return NextResponse.json({error : "User not authenticated" , status : 400})
         }

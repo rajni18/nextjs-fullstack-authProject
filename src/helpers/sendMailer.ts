@@ -7,12 +7,11 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
 
     try {
         const hashedToken = await bcrypt.hash(userId.toString(), 10);
-        const encodedToken = encodeURIComponent(hashedToken);
-        const verifyEmailHTML = `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${encodedToken}">here</a> to verify your email
-      or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${encodedToken}</p>`;
+        const verifyEmailHTML = `<p>Click <a href="${process.env.DOMAIN}/verifyEmail?token=${hashedToken}">here</a> to verify your email
+      or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyEmail?token=${hashedToken}</p>`;
 
-        const resetEmailHTML = `<p>Click <a href="${process.env.DOMAIN}/resetemail?token=${encodedToken}">here</a> to reset your password
-      or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/resetemail?token=${encodedToken}</p>`;
+        const resetEmailHTML = `<p>Click <a href="${process.env.DOMAIN}/resetemail?token=${hashedToken}">here</a> to reset your password
+      or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/resetemail?token=${hashedToken}</p>`;
 
       console.log("emailType--",emailType)
 
