@@ -5,10 +5,20 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+export interface UserInfo{
+  userName : string;
+  email: string
+
+}
+
 
 export default function Profile() {
   const router = useRouter();
-  const [userInfo , setUserInfo] = useState<object>({})
+ const [userInfo, setUserInfo] = useState<UserInfo>({
+  userName: "",
+  email: ""
+});
+
 
   useEffect(()=>{
     fetchUserData();

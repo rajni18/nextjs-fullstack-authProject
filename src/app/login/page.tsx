@@ -13,7 +13,7 @@ export interface loginUser {
 
 const Login = () => {
     const router = useRouter();
-    const [userLogin, setUserLogin] = useState({
+    const [userLogin, setUserLogin] = useState<loginUser>({
         email: '',
         password: ''
     })
